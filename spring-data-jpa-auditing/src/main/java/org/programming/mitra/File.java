@@ -1,15 +1,13 @@
 package org.programming.mitra;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @EntityListeners(FileEntityListener.class)
 class File extends Auditable<String> {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "ID_GENERATOR", sequenceName = "test_auditing.ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_GENERATOR")
     private Integer id;
     private String name;
     private String content;

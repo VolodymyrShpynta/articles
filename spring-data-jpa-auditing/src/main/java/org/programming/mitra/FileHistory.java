@@ -18,7 +18,8 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @EntityListeners(AuditingEntityListener.class)
 public class FileHistory {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "ID_GENERATOR", sequenceName = "test_auditing.ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_GENERATOR")
     private Integer id;
 
     @ManyToOne
